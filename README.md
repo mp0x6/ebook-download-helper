@@ -51,3 +51,13 @@ or
 ```bash
 ./ebook-download-helper link-list.txt "Name of the Book"
 ```
+
+## Troubleshooting
+
+### "The Optimization Stalls For Hours At Some Point With A Ghostscript Warning"
+
+This problem regarding deeply defective PDFs actually is not trivially solvable unless using Adobe Acrobat. If Adobe Acrobat is installed, you can open the file using Adobe Acrobat and use "File - Save As" to save a repaired version. After that, you might want to use Ghostscript on its own to further optimize the PDF and reduce its filesize, like so:
+
+```bash
+gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -sOutputFile=output.pdf input.pdf
+```
