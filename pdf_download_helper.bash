@@ -18,7 +18,7 @@ FOLDERNUMBER=1
 until [ `cat downloadlist.txt | wc -l` -eq 0 ]
 do
 	mkdir "$FOLDERNUMBER"
-	cat downloadlist.txt | head -n "$FILESPERPART" > "$FOLDERNUMBER"/download.txt  # take the first 100 links and put them in FOLDERNUMBER/download.txt
+	cat downloadlist.txt | grep -v 'Nutzungsbedingungen|print/section' | head -n "$FILESPERPART" > "$FOLDERNUMBER"/download.txt  # take the first 100 links and put them in FOLDERNUMBER/download.txt
 	cat downloadlist.txt | tail -n +"$((FILESPERPART + 1))" > downloadlist.tmp && mv downloadlist.tmp downloadlist.txt  # delete the first 100 lines of the file, since we already have them in FOLDERNUMBER/downloads.txt
 	(
 	cd "$FOLDERNUMBER"
