@@ -3,7 +3,7 @@
 DOWNLOADLIST=$1  # take a txt file with the pdf-links as first argument
 FILENAME=$2  # take the title of the book as the second argument
 
-FILESPERPART=150  # defines how many files per part should be downlaoded. number_of_pdf_files/FILESPERPART = number_of_concurrent_downloads
+FILESPERPART=50  # defines how many files per part should be downlaoded. number_of_pdf_files/FILESPERPART = number_of_concurrent_downloads
 
 echo "This tool takes a TXT file with numerically sorted PDF-links as first and the title of the book as second argument"
 echo "You supplied the linklist $DOWNLOADLIST"
