@@ -3,7 +3,7 @@
 DOWNLOADLIST=$1  # take a txt file with the pdf-links as first argument
 FILENAME=$2  # take the title of the book as the second argument
 
-FILESPERPART=50  # defines how many files per part should be downlaoded. number_of_pdf_files/FILESPERPART = number_of_concurrent_downloads
+FILESPERPART=100  # defines how many files per part should be downlaoded. number_of_pdf_files/FILESPERPART = number_of_concurrent_downloads
 
 echo "This tool takes a TXT file with numerically sorted PDF-links as first and the title of the book as second argument"
 echo "You supplied the linklist $DOWNLOADLIST"
@@ -18,15 +18,17 @@ FOLDERNUMBER=1
 until [ `cat downloadlist.txt | wc -l` -eq 0 ]
 do
 	mkdir "$FOLDERNUMBER"
-	cat downloadlist.txt | grep -v -e "Nutzungsbedingungen" -e 'print/section' | head -n "$FILESPERPART" > "$FOLDERNUMBER"/download.txt  # take the first 100 links and put them in FOLDERNUMBER/download.txt
-	cat downloadlist.txt | tail -n +"$((FILESPERPART + 1))" > downloadlist.tmp && mv downloadlist.tmp downloadlist.txt  # delete the first 100 lines of the file, since we already have them in FOLDERNUMBER/downloads.txt
+	# take the first 100 links (if you set $FILESPERPART to 100) and put them in FOLDERNUMBER/download.txt
+	cat downloadlist.txt | grep -v -e "Nutzungsbedingungen" -e 'print/section' | head -n "$FILESPERPART" > "$FOLDERNUMBER"/download.txt
+	# delete the first 100 lines of the file, since we already have them in FOLDERNUMBER/downloads.txt
+	cat downloadlist.txt | tail -n +"$((FILESPERPART + 1))" > downloadlist.tmp && mv downloadlist.tmp downloadlist.txt
 	(
-	cd "$FOLDERNUMBER"
-	wget -U 'Mozilla/5.0 (X11; Linux x86_64; rv:30.0) Gecko/20100101 Firefox/30.0' -i download.txt
-	pdfunite `ls *.pdf | sort -n` "$FOLDERNUMBER".pdf
-	mv "$FOLDERNUMBER".pdf ../
-	cd ..
-	rm -r "$FOLDERNUMBER"
+		cd "$FOLDERNUMBER"
+		wget -U 'Mozilla/5.0 (X11; Linux x86_64; rv:30.0) Gecko/20100101 Firefox/30.0' -i download.txt
+		pdfunite `ls *.pdf | sort -n` "$FOLDERNUMBER".pdf
+		mv "$FOLDERNUMBER".pdf ../
+		cd ..
+		rm -r "$FOLDERNUMBER"
 	) &
 	let FOLDERNUMBER++
 done
