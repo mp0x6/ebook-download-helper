@@ -9,7 +9,7 @@ After that, you're good to go.
 
 ## Usage
 
-```
+```bash
 ./ebook-download-helper link-list.txt "Name of the Book"
 ```
 
@@ -27,20 +27,20 @@ You'll need the following packages:
 
 ## Installation
 On macOS, I recommend the installation of the dependencies via [https://brew.sh](Homebrew). On other platforms, use the package manager of your personal preference. On the command-line, enter the following command (with homebrew installed):
-```
+```bash
 brew install ghostscript wget poppler grep git
 ```
 
 After that, you can clone this respository using git:
-```
+```bash
 git clone https://github.com/mp0x6/ebook-download-helper.git
 ```
 
 Change in the directory of the script and execute it, either by running
-```
+```bash
 bash ebook-download-helper link-list.txt "Name of the Book"
 ```
 or
-```
+```bash
 ./ebook-download-helper link-list.txt "Name of the Book"
 ```
