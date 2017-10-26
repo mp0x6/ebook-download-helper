@@ -21,7 +21,7 @@ do
 	# take the first 100 links (if you set $FILESPERPART to 100) and put them in FOLDERNUMBER/download.txt
 	cat downloadlist.txt | grep -v -e "Nutzungsbedingungen" -e 'print/section' | head -n "$FILESPERPART" > "$FOLDERNUMBER"/download.txt
 	# delete the first 100 lines of the file, since we already have them in FOLDERNUMBER/downloads.txt
-	cat downloadlist.txt | tail -n +"$((FILESPERPART + 1))" > downloadlist.tmp && mv downloadlist.tmp downloadlist.txt
+	cat downloadlist.txt | grep -v -e "Nutzungsbedingungen" -e 'print/section' | tail -n +"$((FILESPERPART + 1))" > downloadlist.tmp && mv downloadlist.tmp downloadlist.txt
 	(
 		cd "$FOLDERNUMBER"
 		wget -U 'Mozilla/5.0 (X11; Linux x86_64; rv:30.0) Gecko/20100101 Firefox/30.0' -i download.txt
