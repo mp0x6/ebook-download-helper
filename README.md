@@ -10,5 +10,30 @@ After that, you're good to go.
 ## Usage
 
 ```
-ebook-download-helper link-list.txt "Name of the Book"
+./ebook-download-helper link-list.txt "Name of the Book"
 ```
+
+## Requirements
+You'll need a UNIX-like OS in order to execute this script.
+
+macOS High Sierra is my personal target platform, but it should work on Linux and other UNIX-like OS'es without any hassle.
+
+You'll need the following packages:
+
+- Ghostscript
+- wget
+- poppler
+- grep
+
+## Installation
+On macOS, I recommend the installation of the dependencies via [https://brew.sh](Homebrew). On other platforms, use the package manager of your personal preference. On the command-line, enter the following command (with homebrew installed):
+```
+brew install ghostscript wget poppler grep git
+```
+
+After that, you can clone this respository using git:
+```
+git clone https://github.com/mp0x6/ebook-download-helper.git
+```
+
+Change in the directory of the script and execute it.
