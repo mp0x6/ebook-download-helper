@@ -36,4 +36,11 @@ After that, you can clone this respository using git:
 git clone https://github.com/mp0x6/ebook-download-helper.git
 ```
 
-Change in the directory of the script and execute it.
+Change in the directory of the script and execute it, either by running
+```
+bash ebook-download-helper link-list.txt "Name of the Book"
+```
+or
+```
+./ebook-download-helper link-list.txt "Name of the Book"
+```
