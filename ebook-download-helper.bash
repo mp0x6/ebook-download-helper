@@ -9,6 +9,11 @@ echo "This tool takes a TXT file with numerically sorted PDF-links as first and 
 echo "You supplied the linklist $DOWNLOADLIST"
 echo "The download of your book $FILENAME will begin shortly"
 
+if [ -d "$FILENAME" ]; then
+	echo "Warning! There already is a folder named $FILENAME. The execution of this script would delete it."
+	exit 1
+fi
+
 mkdir "$FILENAME" 
 cp "$DOWNLOADLIST" "$FILENAME"/downloadlist.txt
 cd "$FILENAME"
