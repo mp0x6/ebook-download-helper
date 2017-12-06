@@ -3,7 +3,7 @@ require 'pp'
 
 foldername = ARGV[0]
 # foldername = './.tmp'
-files_in_folder = Dir.entries('./.tmp').reject { |f| File.directory? f}
+files_in_folder = Dir.entries(foldername).reject { |f| File.directory? f}
 files_in_folder = files_in_folder.select do |elem|
   File.extname(elem) == '.bmp'
 end
