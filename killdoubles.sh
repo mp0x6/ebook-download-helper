@@ -1,15 +1,13 @@
 #!/bin/bash
 
+FILENAME=$1
 # delete temporary directory in case it already exists - maybe add a check if the user wants to perserve his data
 rm -r "./.tmp"
 echo "Usage: ./killdoubles.sh NAMEOFPDF.pdf"
-FILENAME=$1
 # create a working dir
 mkdir "./.tmp"
 cd "./.tmp"
-
 echo "Converting the PDF file to single pages… (this will take a while!)"
-
 # divide the pdf file in new pdfs, page by page
 gs -o doube%04d.pdf -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -sDEVICE=pdfwrite "../$FILENAME" >/dev/null &
 # convert the pdf to bmp files with a resolution of 74x74 dpi
@@ -48,15 +46,6 @@ echo "Optimizing PDF…"
 gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -sOutputFile=foo.pdf "$FILENAME"_unoptimized.pdf >/dev/null 
 mv foo.pdf ../"$FILENAME"_withoutdupes.pdf
 echo "PDF optimized. Cleaning up…"
-
-# run the custom dupehunter application using a custom ruby application
-# pdfunite $(ruby ../dupehunter.rb ./ | cut -d "/" -f 2 | cut -d "." -f 1 | awk '{print $1".pdf"}' | sort) "../$FILENAME"_withoutdupes.pdf
-#        ^ evaluate the command insite the $() before running pdfunite and passing the result to pdfunite as an argument
-#                                     ^ only use the content of the output *after* the first '/'
-#                                                     ^ only pass on the output of the command before the first dot (to omit the file extension .bmp) 
-#                                                                        ^ append a '.pdf' to the result in order to have a list of filenames we can pass to pdfunite      
-                                                 
 cd ..
 rm -r "./.tmp"
-
 echo "Job done. C'ya!"
