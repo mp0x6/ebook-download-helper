@@ -2,6 +2,7 @@
 
 DOWNLOADLIST=$1  # take a txt file with the pdf-links as first argument
 FILENAME=$2  # take the title of the book as the second argument
+COOKIES=$3
 
 FILESPERPART=100  # defines how many files per part should be downlaoded. number_of_pdf_files/FILESPERPART = number_of_concurrent_downloads
 
@@ -29,7 +30,7 @@ do
 	cat downloadlist.txt | grep -v -e "Nutzungsbedingungen" -e 'print/section' | tail -n +"$((FILESPERPART + 1))" > downloadlist.tmp && mv downloadlist.tmp downloadlist.txt
 	(
 		cd "$FOLDERNUMBER"
-		wget -U 'Mozilla/5.0 (X11; Linux x86_64; rv:30.0) Gecko/20100101 Firefox/30.0' -i download.txt
+		wget -U 'Mozilla/5.0 (X11; Linux x86_64; rv:30.0) Gecko/20100101 Firefox/30.0' --load-cookies "$COOKIES" -i download.txt
 		pdfunite `ls *.pdf | sort -n` "$FOLDERNUMBER".pdf
 		mv "$FOLDERNUMBER".pdf ../
 		cd ..

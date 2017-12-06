@@ -1,0 +1,24 @@
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/pdf]
+Saving to: '244270103_004_010_009.pdf'
+
+
+
+2017-11-13 13:38:47 (138 KB/s) - '244270103_004_010_009.pdf' saved [160473]
+
+--2017-11-13 13:38:47--  https://eref.thieme.de/ebooks/pdf/1553751/244270103_004_010_010.pdf
+Reusing existing connection to eref.thieme.de:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/pdf]
+Saving to: '244270103_004_010_010.pdf'
+
+
+
+2017-11-13 13:38:49 (80.8 KB/s) - '244270103_004_010_010.pdf' saved [177610]
+
+--2017-11-13 13:38:49--  https://eref.thieme.de/ebooks/pdf/1553751/244270103_004_010_011.pdf
+Reusing existing connection to eref.thieme.de:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/pdf]
+Saving to: '244270103_004_010_011.pdf'
+
