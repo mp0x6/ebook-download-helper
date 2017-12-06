@@ -10,7 +10,7 @@ end
 
 hashed_files = Array.new
 files_in_folder.each() { |file|
-  filename = foldername + '/' + file
+  filename = foldername + file
   hash_of_file = Digest::SHA256.file filename
   hash_of_file_hex = hash_of_file.hexdigest
   filename_hash_pair = [filename, hash_of_file_hex]
