@@ -30,8 +30,8 @@ do
 	cat downloadlist.txt | grep -v -e "Nutzungsbedingungen" -e 'print/section' | tail -n +"$((FILESPERPART + 1))" > downloadlist.tmp && mv downloadlist.tmp downloadlist.txt
 	(
 		cd "$FOLDERNUMBER"
-		wget -U 'Mozilla/5.0 (X11; Linux x86_64; rv:30.0) Gecko/20100101 Firefox/30.0' --load-cookies "$COOKIES" -i download.txt
-		pdfunite `ls *.pdf | sort -n` "$FOLDERNUMBER".pdf
+		wget -U 'Mozilla/5.0 (X11; Linux x86_64; rv:30.0) Gecko/20100101 Firefox/30.0' --load-cookies "$COOKIES" -i download.txt >/dev/null 
+		pdfunite `ls *.pdf | sort -n` "$FOLDERNUMBER".pdf >/dev/null 
 		mv "$FOLDERNUMBER".pdf ../
 		cd ..
 		rm -r "$FOLDERNUMBER"
@@ -40,10 +40,10 @@ do
 done
 wait
 echo "Assembling all files…"
-pdfunite `ls *.pdf | sort -n` "$FILENAME"_unoptimized.pdf
+pdfunite `ls *.pdf | sort -n` "$FILENAME"_unoptimized.pdf >/dev/null 
 echo "Done."
 echo "Optimizing PDF…"
-gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -sOutputFile="$FILENAME".pdf "$FILENAME"_unoptimized.pdf
+gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -sOutputFile="$FILENAME".pdf "$FILENAME"_unoptimized.pdf >/dev/null 
 mv "$FILENAME".pdf ../"$FILENAME".pdf
 cd ..
 rm -r "$FILENAME"
