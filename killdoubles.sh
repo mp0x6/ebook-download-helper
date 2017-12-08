@@ -17,7 +17,7 @@ wait
 echo "Conversion of files done."
 echo "Looking for duplicate pages…"
 # pass the current directory to the custom ruby script in order to check cryptographically which bmp files in the current folder are indeed unique
-ruby ../dupehunter.rb ./ | cut -d "/" -f 2 | cut -d "." -f 1 | awk '{print $1".pdf"}' | sort > listofpdfs.txt
+ruby ../dupehunter.rb ./ bmp | cut -d "/" -f 2 | cut -d "." -f 1 | awk '{print $1".pdf"}' | sort > listofpdfs.txt
 #                          ^ omit everything before the first '/'
 #                                            ^ omit the '.bmp' file ending by ignoring everything before the first '.'
 #                                                               ^ append a '.pdf' to every filename

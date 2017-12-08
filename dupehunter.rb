@@ -3,11 +3,13 @@ require 'pp'
 
 # get the first argument and set it to foldername
 foldername = ARGV[0]
+# get the filetype
+filetype = ARGV[1]
 # get all entrys in the directory that are not a directory
 files_in_folder = Dir.entries(foldername).reject { |f| File.directory? f}
 files_in_folder = files_in_folder.select do |elem|
-  # ensure all files checked are in fact .bmps
-  File.extname(elem) == '.bmp'
+  # ensure all files checked are in fact the filetype that the user requested
+  File.extname(elem) == '.' + filetype
 end
 
 hashed_files = Array.new
