@@ -7,10 +7,13 @@ Configure it to use "TXT" as output format, set "Multiple Extensions" to "pdf" a
 
 After that, you're good to go.
 
+This project also includes an application to delete double pages in pdf files, which can be super useful. Just use the "killdoubles.sh" script included in the projects folder.
+
 ## Usage
 
 ```bash
 ./ebook-download-helper link-list.txt "Name of the Book"
+./killdoubles.sh pdf-file.pdf
 ```
 
 ## Requirements
