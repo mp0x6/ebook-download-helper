@@ -1,6 +1,12 @@
 #!/bin/bash
 
 FILENAME=$1
+
+if [ -d "./.tmp" ]; then
+	echo "Warning! There already is a folder named $FILENAME. The execution of this script would delete it."
+	exit 1
+fi
+
 # delete temporary directory in case it already exists - maybe add a check if the user wants to perserve his data
 rm -r "./.tmp"
 echo "Usage: ./killdoubles.sh NAMEOFPDF.pdf"
