@@ -7,6 +7,7 @@ if [ -d "./.tmp" ]; then
 fi
 
 echo "Usage: ./killdoubles.sh NAMEOFPDF.pdf"
+echo "Note: The pdf file must be in the same directory as the script itself!"
 # create a working dir
 mkdir "./.tmp"
 cd "./.tmp"
