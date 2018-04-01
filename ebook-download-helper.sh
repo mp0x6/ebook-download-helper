@@ -48,3 +48,6 @@ mv "$FILENAME".pdf ../"$FILENAME".pdf
 cd ..
 rm -r "$FILENAME"
 echo "All done! Your book $FILENAME is ready."
+echo "Deleting doubles."
+./killdoubles.sh $FILENNAME.pdf
+rm $FILENAME.pdf
